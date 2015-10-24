@@ -71,6 +71,11 @@ And voila your images will be generated on the fly!
 
 ![Preview mocked front end](/ps/m2_mediamock_frontend.png)
 
+Todo
+-----
+
+Figure out how to mock the product detail page images, especially the gallery.
+
 Compatibility
 -------------
 
