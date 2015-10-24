@@ -54,12 +54,12 @@ For detailed statistic about mediamock server internals you can visit
 Configure URLs under `System - Configuration - Web - Unsecure` and 
 `System - Configuration - Web - Secure` for all store views!
 
-![Adjust base media urls](/BaseMediaUrlSettings.png)
+![Adjust base media urls](/ps/m2_mediamock_be_setting.png)
 
 Alternatively:
 
 ```
-UPDATE `core_config_data` SET `value` = 'http://127.0.0.1:4711/media/' 
+UPDATE `core_config_data` SET `value` = 'http://127.0.0.1:4711/pub/media/' 
 WHERE `path` LIKE '%media_url%' AND `value` like '%media%';
 ```
 
@@ -67,7 +67,9 @@ WHERE `path` LIKE '%media_url%' AND `value` like '%media%';
 
 And voila your images will be generated on the fly!
 
-![Preview mocked front end](/MagentoFrontEndMocked.png)
+![Preview mocked back end](/ps/m2_mediamock_backend.png)
+
+![Preview mocked front end](/ps/m2_mediamock_frontend.png)
 
 Compatibility
 -------------
