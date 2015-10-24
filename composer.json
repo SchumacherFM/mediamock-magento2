@@ -1,0 +1,28 @@
+{
+    "name": "schumacherfm/mediamock-magento2",
+    "description": "Mediamock feature: Disable file access when reading images",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/framework": "1.0.0-beta"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "SchumacherFM\\MediaMock\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Cyrill Schumacher",
+            "email": "cyrill@schumacher.fm"
+        }
+    ],
+    "type": "magento2-module",
+    "version": "0.0.1-alpha",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ]
+}
