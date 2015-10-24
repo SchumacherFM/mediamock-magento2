@@ -28,9 +28,6 @@ class Image extends \Magento\Catalog\Model\Product\Image
      */
     public function setBaseFile($file)
     {
-        \Zend_Debug::dump($file);
-        exit;
-
         $this->_isBaseFilePlaceholder = false;
 
         if ($file && 0 !== strpos($file, '/', 0)) {
@@ -47,27 +44,29 @@ class Image extends \Magento\Catalog\Model\Product\Image
 //                $file = null;
 //            }
 //        }
-        if (!$file) {
-            $this->_isBaseFilePlaceholder = true;
-            // check if placeholder defined in config
-            $isConfigPlaceholder = $this->_scopeConfig->getValue(
-                "catalog/placeholder/{$this->getDestinationSubdir()}_placeholder",
-                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            );
-            $configPlaceholder = '/placeholder/' . $isConfigPlaceholder;
-            if (!empty($isConfigPlaceholder) && $this->_fileExists($baseDir . $configPlaceholder)) {
-                $file = $configPlaceholder;
-            } else {
-                $this->_newFile = true;
-                return $this;
-            }
-        }
+        $this->_isBaseFilePlaceholder = true;
+// SchumacherFM: Not needed
+//        if (!$file) {
+//            $this->_isBaseFilePlaceholder = true;
+//            // check if placeholder defined in config
+//            $isConfigPlaceholder = $this->_scopeConfig->getValue(
+//                "catalog/placeholder/{$this->getDestinationSubdir()}_placeholder",
+//                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+//            );
+//            $configPlaceholder = '/placeholder/' . $isConfigPlaceholder;
+//            if (!empty($isConfigPlaceholder) && $this->_fileExists($baseDir . $configPlaceholder)) {
+//                $file = $configPlaceholder;
+//            } else {
+//                $this->_newFile = true;
+//                return $this;
+//            }
+//        }
 
         $baseFile = $baseDir . $file;
-
-        if (!$file || !$this->_mediaDirectory->isFile($baseFile)) {
-            throw new \Exception(__('We can\'t find the image file.'));
-        }
+// SchumacherFM: Not needed
+//        if (!$file || !$this->_mediaDirectory->isFile($baseFile)) {
+//            throw new \Exception(__('We can\'t find the image file.'));
+//        }
 
         $this->_baseFile = $baseFile;
 
@@ -120,7 +119,7 @@ class Image extends \Magento\Catalog\Model\Product\Image
      */
     protected function _fileExists($filename)
     {
-        return false;
+        return true;
     }
 
     /**
@@ -130,24 +129,10 @@ class Image extends \Magento\Catalog\Model\Product\Image
      */
     public function getResizedImageInfo()
     {
-        \Zend_Debug::dump([
-            'getResizedImageInfo',
-            __FILE__,
-            __LINE__,
-            $this->_newFile
-        ]);
-        exit;
 
-//        if ($this->_newFile === true) {
-//            $fileInfo = getimagesize(
-//                $this->_assetRepo->createAsset(
-//                    "Magento_Catalog::images/product/placeholder/{$this->getDestinationSubdir()}.jpg"
-//                )->getSourceFile()
-//            );
-//        } else {
-//            $fileInfo = getimagesize($this->_mediaDirectory->getAbsolutePath($this->_newFile));
-//        }
-//        return $fileInfo;
+        // if things look weird on the frontend then this would be the
+        // place where you will make a JSON request to media mock to fetch the
+        // image size.
         return [];
     }
 }
